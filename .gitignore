@@ -1,0 +1,15 @@
+# Archivos de sistema y entorno
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Base de datos local (NO subir)
+chroma_data/
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/

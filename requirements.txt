@@ -1,0 +1,5 @@
+fastapi[standard]
+chromadb
+cohere
+langchain-text-splitters
+pydantic
