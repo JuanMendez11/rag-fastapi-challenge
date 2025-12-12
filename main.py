@@ -5,16 +5,19 @@ from services import split_text_into_chunks, get_embedding, generate_answer_with
 import uuid
 import logging
 import sys
-
+import os
 
 app = FastAPI(title="Sistema RAG API", version="1.0.0")
 
+
+log_dir = "logs"
+os.makedirs(log_dir, exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("logs/traza_rag.log"), # Guarda en un archivo
+        logging.FileHandler(f"{log_dir}/traza_rag.log"), # Guarda en un archivo
         logging.StreamHandler(sys.stdout)     # Muestra en la terminal
     ]
 )
