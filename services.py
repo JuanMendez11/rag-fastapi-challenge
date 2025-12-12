@@ -26,10 +26,9 @@ def get_embedding(text: str):
     if not co:
           raise Exception("API Key de Cohere no configurada")
     try:
-        # Ejemplo usando Cohere
         response = co.embed(
             texts=[text],
-            model='embed-multilingual-v3.0', # O el modelo que prefieras
+            model='embed-multilingual-v3.0',
             input_type='search_document',
             embedding_types=["float"]
         )
@@ -37,12 +36,9 @@ def get_embedding(text: str):
         return response.embeddings.float[0]
         
     except Exception as e:
-        # El documento pide manejar errores con servicios externos (Error 500)
         print(f"Error generando embedding: {e}")
         return None
 
-
-# services.py (Agregar esta función)
 
 def generate_answer_with_context(question: str, context: str):
     """
@@ -66,12 +62,11 @@ def generate_answer_with_context(question: str, context: str):
     """
 
     try:
-        # Usamos co.chat (Modelo generativo)
         response = co.chat(
             messages=[{"role": "system", "content": system_prompt},
                       {"role": "user", "content": question}],
-            model='command-r-plus-08-2024',      # Modelo optimizado para RAG
-            temperature=0.1           # Temperatura 0 para máxima fidelidad (menos creatividad)
+            model='command-r-plus-08-2024',
+            temperature=0.1 
         )
         return response.message.content[0].text
     except Exception as e:
