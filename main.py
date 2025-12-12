@@ -67,15 +67,13 @@ def generate_embeddings(request: GenerateEmbeddingsRequest):
     try:
         # Procesamos cada chunk
         for i, chunk_text in enumerate(chunks):
-            # a. Generar vector con API externa
+            # Generar vector embedding
             vector = get_embedding(chunk_text)
             
-            # b. Crear ID único para el chunk (ej: "doc123_0", "doc123_1")
+            # Crear ID único para el chunk
             chunk_id = f"{doc_id}_{i}"
             
-            # c. Guardar en ChromaDB
-            # IMPORTANTE: Guardamos el 'chunk_text' como el documento visible
-            # y el 'doc_id' original en la metadata para saber de dónde vino.
+            # Guardar en ChromaDB.
             save_to_vector_db(
                 db_id=chunk_id,
                 original_doc_id=doc_id, # Metadata clave
