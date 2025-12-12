@@ -6,6 +6,7 @@ import uuid
 import logging
 import sys
 import os
+import uvicorn
 
 app = FastAPI(title="Sistema RAG API", version="1.0.0")
 
@@ -209,5 +210,4 @@ def ask(request: AskQuestionRequest):
     )
 
 if __name__ == '__main__':
-    import uvicorn
     uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True, reload_excludes=["logs/*"])

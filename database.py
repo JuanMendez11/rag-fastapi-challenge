@@ -1,5 +1,4 @@
 import chromadb
-from typing import List
 
 
 client = chromadb.PersistentClient(path="./chroma_data")

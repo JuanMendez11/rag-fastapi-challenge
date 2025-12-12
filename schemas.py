@@ -1,10 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List
-
-class Document(BaseModel):
-    id: Optional[int] = None
-    title: str
-    content: str
+from typing import List
 
 
 # Input para /upload
